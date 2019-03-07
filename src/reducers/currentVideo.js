@@ -1,6 +1,6 @@
 import Redux from 'redux';
 
-var currentVideoReducer = (state = null, action) => {
+var currentVideo = (state = null, action) => {
   //TODO: define a reducer for the currentVideo field of our state. 
   /*
    if the action type is equal to CHANGE_VIDEO "Switch"
@@ -14,4 +14,4 @@ var currentVideoReducer = (state = null, action) => {
    }
 };
 
-export default currentVideoReducer;
+export default currentVideo;
