@@ -1,6 +1,6 @@
 import Redux from 'redux';
 
-var videoList = (state = [], action) => {
+var videoListReducer = (state = [], action) => {
   //TODO: define a reducer for the videoList field of our state.
 
     switch (action.type) {
@@ -11,4 +11,4 @@ var videoList = (state = [], action) => {
     }
 };
 
-export default videoList;
+export default videoListReducer;
