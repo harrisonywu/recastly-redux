@@ -8,6 +8,7 @@ import changeVideo from '../actions/currentVideo.js';
 import changeVideoList from '../actions/videoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import store from '../store/store.js';
+import Search from './Search.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,12 +28,20 @@ export default class App extends React.Component {
     this.setState({currentVideo: video});
   }
 
+  handleSearchInputChange(text) {
+    // we must re-render the videoList and videoPlayer at each keyboard input
+    // must grab youtube data API matching that keyboard input
+    console.log(text);
+  };
+
+
   getYouTubeVideos(query) {
     var options = {
       key: this.props.API_KEY,
       query: query
     };
 
+ 
     this.props.searchYouTube(options, (videos) =>
       this.setState({
         videos: videos,
@@ -48,7 +57,7 @@ export default class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 col-md-offset-3">
-            <Search handleSearchInputChange={handleSearchInputChange}/>
+            <Search handleSearchInputChange={_.debounce(this.getYouTubeVideos.bind(this), 500)}/>
           </div>
         </nav>
         <div className="row">
